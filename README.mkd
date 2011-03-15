@@ -1,0 +1,96 @@
+ABOUT
+=====
+
+Erlang generic templates for vim
+
+INTRODUCTION
+------------
+
+This plugin provides a quick access to Erlang templates, such as gen_server,
+get_event etc.
+
+The default templates are ripped out of emacs.
+
+This plugin requires your vim to be compiled with Python support.
+
+You can customize this suite to your needs.
+
+This plugin works well with pathogen (https://github.com/tpope/vim-pathogen).
+Make sure you `call #pathogen:helptags()` to enjoy vim help pages for this
+plugin.
+
+
+COMMANDS
+--------
+
+`:ErlServer`              Loads gen_server template into current buffer.
+
+`:ErlFsm`                 Loads gen_fsm template into current buffer.
+
+`:ErlSupervisor`          Loads supervisor template into current buffer.
+
+`:ErlEvent`               Loads gen_event template into current buffer.
+
+`:ErlApplication`         Loads application template into current buffer.
+
+`:ErlTemplate [arg]`      Loads [arg] template into current buffer.
+
+
+TEMPLATES
+=========
+
+Templates are plain text files containing special placeholders that start
+with dollar sign.
+
+Example:
+
+        -module($basename)
+
+
+VARIABLES
+=========
+
+Variables used are:
+
+`$basename`              Current buffer's filename without extension. Defaults to 'untitled' for an unnamed buffer.
+
+`$author`                Defaults to `whoami` if undefined
+
+`$company`               Defaults to $author if undefined
+
+`$fulldate`              Defaults to python's datetime.now()
+
+`$year`                  Defaults to python's datetime.now().year
+
+
+CONFIGURATION
+=============
+
+Following variables can be overrided via .vimrc settings:
+
+`erl_author`              default: `whoami`
+
+`erl_company`             default: g:erl_author
+
+`erl_replace_buffer`      default: 0. If "1", will erase current buffer after a template insertion command is triggered.
+
+`erl_tpl_dir`             default: Plugin directory concatenated with "/templates". Allows you to use your own template directory. Note, that commands will raise errors, if hardcoded template files doesn't exist there.
+
+
+Example .vimrc entries:
+
+    let g:erl_author="Herp Derp"
+
+    let g:erl_company="Me Gusta Inc"
+
+    let g:erl_replace_buffer=1
+
+    let g:erl_tpl_dir="/home/herp/erlang/templates"
+
+
+CONTRIBUTE
+==========
+
+Feel free to suggest any improvements or extensions at project's github:
+
+    http://github.com/aerosol/vim-erlang-skeletons
